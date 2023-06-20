@@ -1,23 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+import Home from '../views/Home.vue'
+import Search from '../views/Search.vue'
+import Cart from '../views/Cart.vue'
+import Center from '../views/Center.vue'
+
+import Login from '../views/Login.vue'
+import Regist from '../views/Regist.vue'
+import Catelog from '../views/Catelog.vue'
+import Detail from '../views/Detail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  { path: '/',component: Home },
+  { path: '/search',component: Search },
+  { path: '/cart',component: Cart },
+  { path: '/center',component: Center },
+  
+  { path: '/login',component: Login },
+  { path: '/regist',component: Regist },
+  { path: '/catelog',component: Catelog },
+  { path: '/detail',component: Detail }
 ]
 
 const router = new VueRouter({
@@ -25,5 +30,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+//避免重复路由问题
+const originalPush = VueRouter.prototype.push
+
+VueRouter.prototype.push = function push(location){
+	return originalPush.call(this, location).catch(err => err)  
+}
+
 
 export default router

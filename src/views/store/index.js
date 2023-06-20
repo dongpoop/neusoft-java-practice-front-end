@@ -4,18 +4,18 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+	
+  //定义全局数据
   state: {
-	  // global path of slides
+	  //轮播图片的路径
 	  slideImageURL: 'http://localhost:8888/image/slide/',
-	  
-	  // global path of product type
+	
+	  //商品类型图片的路径
 	  productTypeImageURL: 'http://localhost:8888/image/product_type/',
 	  
-	  // global path of product image
+	  //商品图片的路径
 	  productImageURL: 'http://localhost:8888/image/product/',
-
-      // global path of user photo
-      photoImageURL: 'http://localhost:8888/image/photo/',
+	
   },
   getters: {
   },
